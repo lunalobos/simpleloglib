@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="simpleloglib.LoggingTest" time="0.222" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="jdk.extensions.version" value="21.0.3.0"/>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\maluna\Documents\git\repository\simpleloglib\main\target\test-classes;C:\Users\maluna\Documents\git\repository\simpleloglib\main\target\classes;C:\Users\maluna\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maluna\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maluna\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maluna\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maluna\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maluna\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maluna\.m2\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse OpenJ9"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="com.ibm.vm.bitmode" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="com.ibm.oti.vm.library.version" value="29"/>
+    <property name="java.vendor.url" value="https://www.ibm.com/semeru-runtimes"/>
+    <property name="user.timezone" value="America/Buenos_Aires"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="user.country" value="AR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin\default;C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin"/>
+    <property name="sun.java.command" value="C:\Users\maluna\AppData\Local\Temp\surefire19306326390694731\surefirebooter-20240930134146355_3.jar C:\Users\maluna\AppData\Local\Temp\surefire19306326390694731 2024-09-30T13-41-46_115-jvmRun1 surefire-20240930134146355_1tmp surefire_0-20240930134146355_2tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\maluna\Documents\git\repository\simpleloglib\main\target\test-classes;C:\Users\maluna\Documents\git\repository\simpleloglib\main\target\classes;C:\Users\maluna\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maluna\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maluna\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maluna\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maluna\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maluna\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maluna\.m2\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\maluna"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="C:\Users\maluna\Documents\semeru-jdk-21.0.3+9"/>
+    <property name="ibm.signalhandling.rs" value="false"/>
+    <property name="openjdk.methodhandles" value="true"/>
+    <property name="file.separator" value="\"/>
+    <property name="jdk.extensions.name" value="Extensions for OpenJDK for Eclipse OpenJ9"/>
+    <property name="basedir" value="C:\Users\maluna\Documents\git\repository\simpleloglib\main"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="com.ibm.util.extralibs.properties" value=""/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="com.ibm.oti.configuration" value="scar"/>
+    <property name="java.awt.fonts" value=""/>
+    <property name="surefire.real.class.path" value="C:\Users\maluna\AppData\Local\Temp\surefire19306326390694731\surefirebooter-20240930134146355_3.jar"/>
+    <property name="com.ibm.oti.shared.enabled" value="false"/>
+    <property name="com.ibm.oti.vm.bootstrap.library.path" value="C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin\default;C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin"/>
+    <property name="com.ibm.cpu.endian" value="little"/>
+    <property name="java.fullversion" value="21.0.3+9-LTS&#10;JRE 21 Windows 10 amd64-64-Bit Compressed References 20240416_179 (JIT enabled, AOT enabled)&#10;OpenJ9   - b0699311c7&#10;OMR      - 254af5a04&#10;JCL      - ac8f341bc20 based on jdk-21.0.3+9"/>
+    <property name="java.runtime.version" value="21.0.3+9-LTS"/>
+    <property name="user.name" value="maluna"/>
+    <property name="stdout.encoding" value="windows-1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="IBM Semeru Runtime Open Edition"/>
+    <property name="ibm.signalhandling.sigint" value="true"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="openj9.compiler" value="j9jit29"/>
+    <property name="java.vm.name" value="Eclipse OpenJ9 VM"/>
+    <property name="java.vendor.version" value="21.0.3.0"/>
+    <property name="ibm.signalhandling.sigchain" value="true"/>
+    <property name="localRepository" value="C:\Users\maluna\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/ibmruntimes/Semeru-Runtimes/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\maluna\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.3"/>
+    <property name="com.ibm.system.agent.path" value="C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin"/>
+    <property name="user.dir" value="C:\Users\maluna\Documents\git\repository\simpleloglib\main"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="os.encoding" value="UTF-8"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin\default;C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin;C:\Windows\system32;C:\Windows;C:\Users\maluna\Documents\semeru-jdk-21.0.3+9\bin;C:\oracle\product\11g_64bits\bin;C:\oracle\product\11g_32bits\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Internet Explorer\;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Users\maluna\Documents\node-v20.12.1-win-x64;C:\Users\maluna\Documents\apache-maven-3.9.1\bin;C:\Users\maluna\Documents\SQLite;;."/>
+    <property name="java.vendor" value="IBM Corporation"/>
+    <property name="java.vm.info" value="JRE 21 Windows 10 amd64-64-Bit Compressed References 20240416_179 (JIT enabled, AOT enabled)&#10;OpenJ9   - b0699311c7&#10;OMR      - 254af5a04&#10;JCL      - ac8f341bc20 based on jdk-21.0.3+9"/>
+    <property name="stderr.encoding" value="windows-1252"/>
+    <property name="java.vm.version" value="openj9-0.44.0"/>
+    <property name="com.ibm.jcl.checkClassPath" value=""/>
+    <property name="ibm.system.encoding" value="Cp1252"/>
+    <property name="java.lang.invoke.VarHandle.VAR_HANDLE_GUARDS" value="false"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="test" classname="simpleloglib.LoggingTest" time="0.169"/>
+</testsuite>
