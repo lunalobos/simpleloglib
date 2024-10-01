@@ -36,5 +36,4 @@ class ThresholdFilter implements Filter {
     public boolean accept(Event event) {
         return event.level().ordinal() >= level.ordinal();
     }
-
 }

@@ -32,9 +32,11 @@ public class JDBCAppender implements Appender {
     private JDBCAppenderConfig config;
     private Filter filter;
 
-    public JDBCAppender(String name, ConnectionFactory connectionFactory, JDBCAppenderConfig config) {
+    public JDBCAppender(String name, JDBCAppenderConfig config) {
         this.name = name;
-        this.connectionFactory = connectionFactory;
+        this.connectionFactory = config.getConnectionFactory() == null
+                ? new DefaultConnectionFactory(config.getConnectURI())
+                : config.getConnectionFactory();
         this.config = config;
     }
 
@@ -58,9 +60,8 @@ public class JDBCAppender implements Appender {
     @Override
     public void append(Event event, Layout layout) {
         try (Connection connection = connectionFactory.getConnection()) {
-            if (filter.accept(event)) {
+            if (filter.accept(event))
                 persistInDB(event, connection);
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -70,7 +71,8 @@ public class JDBCAppender implements Appender {
     public void append(Collection<Event> events, Layout layout) {
         try (Connection connection = connectionFactory.getConnection()) {
             for (Event event : events) {
-                persistInDB(event, connection);
+                if (filter.accept(event))
+                    persistInDB(event, connection);
             }
         } catch (SQLException e) {
             e.printStackTrace();

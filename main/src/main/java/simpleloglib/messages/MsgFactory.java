@@ -40,5 +40,4 @@ class SimpleMessage implements Message {
     public String toString() {
         return getFormattedMessage();
     }
-
 }

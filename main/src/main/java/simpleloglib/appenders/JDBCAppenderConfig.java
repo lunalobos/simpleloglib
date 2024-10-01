@@ -23,6 +23,8 @@ import lombok.Data;
 public class JDBCAppenderConfig {
     private String tableName;
     private Collection<Column> columns;
+    private ConnectionFactory connectionFactory;
+    private String connectURI;
 
     public String slq(){
         var sb = new StringBuilder("INSERT INTO ").append(tableName).append(" (");
