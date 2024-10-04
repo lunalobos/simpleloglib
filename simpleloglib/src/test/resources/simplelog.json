@@ -1,0 +1,48 @@
+{
+    "threads": 10,
+    "batchSize": 100,
+    "appenders": [
+        {
+            "name": "DatabaseAppender",
+            "type": "jdbc",
+            "connectURL": "jdbc:sqlite:sample.db",
+            "connectionClassName": null,
+            "tableName": "application_log",
+            "columns": [
+                {
+                    "name": "event_id"
+                },
+                {
+                    "name": "event_date"
+                },
+                {
+                    "name": "level"
+                },
+                {
+                    "name": "message"
+                },
+                {
+                    "name": "logger"
+                },
+                {
+                    "name": "throwable"
+                }
+            ],
+            "filter": {
+                "level": "DEBUG"
+            }
+        },
+        {
+            "name": "ConsoleAppender",
+            "type": "console",
+            "connectURL": null,
+            "connectionClassName": null,
+            "tableName": null,
+            "columns": [],
+            "filter": {
+                "level": "INFO"
+            }
+        }
+    ],
+    "layout": "[%level] %date - %logger - %thread : %msg %throwable"
+}
