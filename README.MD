@@ -1,4 +1,4 @@
-# Project Title
+# SimpleLogLib
 
 ## Table of Contents
 + [About](#about)
