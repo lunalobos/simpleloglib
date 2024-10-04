@@ -1,109 +1,138 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img src="https://i.imgur.com/AZ2iWek.png" alt="Project logo"></a>
-</p>
-<h3 align="center">SimpleLogLib</h3>
+# Project Title
 
-<div align="center">
+## Table of Contents
++ [About](#about)
++ [Getting Started](#getting_started)
++ [Usage](#usage)
++ [Contributing](../CONTRIBUTING.md)
 
-  [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE.md)
+## About <a name = "about"></a>
+This project was created because I encountered the great complexity of logging libraries and interfaces that didn't fully meet my needs. I decided to create a library that's a bit simpler, but with some features broadly similar to existing ones. There areloggers, appenders, messages, levels but everything is much simpler, including the configuration. It is still under development.
 
-</div>
+Simplicity is sometimes needed:
 
----
+- There are no custom levels—you don’t need that.
+- No complicated XML configuration files; JSON is more intuitive.
+- No unnecessary annotations that hide implementations—only Spring can do that.
+- Java is a great language. It should be simple, and it can be simple with your help.
 
-<p align="center"> Few lines describing your project.
-    <br> 
-</p>
-
-## 📝 Table of Contents
-- [Problem Statement](#problem_statement)
-- [Idea / Solution](#idea)
-- [Dependencies / Limitations](#limitations)
-- [Future Scope](#future_scope)
-- [Setting up a local environment](#getting_started)
-- [Usage](#usage)
-- [Technology Stack](#tech_stack)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgments)
-
-## 🧐 Problem Statement <a name = "problem_statement"></a>
-It is useful to design and follow a specific format when writing a problem statement. While there are several options
-for doing this, the following is a simple and straightforward template often used in Business Analysis to maintain
-focus on defining the problem.
-
-- IDEAL: This section is used to describe the desired or “to be” state of the process or product. At large, this section 
-should illustrate what the expected environment would look like once the solution is implemented.
-- REALITY: This section is used to describe the current or “as is” state of the process or product. 
-- CONSEQUENCES: This section is used to describe the impacts on the business if the problem is not fixed or improved upon.
-This includes costs associated with loss of money, time, productivity, competitive advantage, and so forth.
-
-Following this format will result in a workable document that can be used to understand the problem and elicit
-requirements that will lead to a winning solution. 
-
-## 💡 Idea / Solution <a name = "idea"></a>
-This section is used to describe potential solutions. 
-
-Once the ideal, reality, and consequences sections have been 
-completed, and understood, it becomes easier to provide a solution for solving the problem.
-
-## ⛓️ Dependencies / Limitations <a name = "limitations"></a>
-- What are the dependencies of your project?
-- Describe each limitation in detailed but concise terms
-- Explain why each limitation exists
-- Provide the reasons why each limitation could not be overcome using the method(s) chosen to acquire.
-- Assess the impact of each limitation in relation to the overall findings and conclusions of your project, and if 
-appropriate, describe how these limitations could point to the need for further research.
-
-## 🚀 Future Scope <a name = "future_scope"></a>
-Write about what you could not develop during the course of the Hackathon; and about what your project can achieve 
-in the future.
-
-## 🏁 Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of the project up and running on your local machine for development 
-and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+## Getting Started <a name = "getting_started"></a>
+This project is under development, but many classes are already usable. You just need to clone the repository and install it with mvn install. Then, the LogManager class provides instances of Loggers according to the class in question. The configuration is simple, and for now, there are only two types of Appenders: console and relational database using JDBC.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
+You need java 21 and maven 3.8 or superior.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+```console
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+git clone git@github.com:lunalobos/simpleloglib.git
 
 ```
-until finished
+
+```console
+
+cd <your cloned repo location>
+
+mvn clean install
+
 ```
 
-## 🎈 Usage <a name="usage"></a>
-Add notes about how to use the system.
+## Usage <a name = "usage"></a>
 
-## ⛏️ Built With <a name = "tech_stack"></a>
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+To use it just import simpleloglib.loggers.LogManager factory class and simpleloglib.Logger interface:
 
-## ✍️ Authors <a name = "authors"></a>
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+```java
+import simpleloglib.loggers.LogManager;
+import simpleloglib.Logger;
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) 
-who participated in this project.
+class MyClass {
+    private static final Logger logger = LogManager.getLogger(MyClass.class);
 
-## 🎉 Acknowledgments <a name = "acknowledgments"></a>
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+    public void someMethod(){
+        logger.info("hello");
+    }
+}
+
+
+```
+
+### Configuration
+The configuration can currently be understood with an example. A file named simplelog.json should be placed in the resources folder. The Config class from the library will inspect the resources and apply the specified settings; if nothing is found, logging will be configured by default with a console appender. There are no validations yet, so if you provide an incorrect value, the behavior of the library's classes is undefined.
+
+```json
+
+{
+    // Number of threads to be used in the thread pool for logging
+    "threads": 10,
+
+    // The batch size for batch insertions in general
+    "batchSize": 100,
+
+    // List of appenders, each appender defines where logs will be output
+    "appenders": [
+        {
+            // Name of the appender, used for identification
+            "name": "DatabaseAppender",
+
+            // Type of the appender, in this case, jdbc for relational database logging
+            "type": "jdbc",
+
+            // The JDBC connection URL for the database
+            // You must include a username and password in the URL if you're using a more 
+            // advanced database. In this case, I use SQLite because I absolutely love 
+            // keeping things simple.
+            "connectURL": "jdbc:sqlite:sample.db",
+
+            // Custom connection class name if needed (null by default)
+            "connectionClassName": null,
+
+            // The name of the table where logs will be stored
+            "tableName": "application_log",
+
+            // List of columns in the database table that will store log information
+            "columns": [
+                { "name": "event_id" },    // Unique ID for the log event
+                { "name": "event_date" },  // Timestamp of the log event
+                { "name": "level" },       // Log level (e.g., DEBUG, INFO, ERROR)
+                { "name": "message" },     // The log message
+                { "name": "logger" },      // Name of the logger instance
+                { "name": "throwable" }    // Details of any thrown exception (if any)
+            ],
+
+            // Filter to specify the minimum logging level for this appender
+            "filter": {
+                "level": "DEBUG"  // Logs at DEBUG level or higher will be saved
+            }
+        },
+        {
+            // Name of the appender for console output
+            "name": "ConsoleAppender",
+
+            // Type of appender for console logging
+            "type": "console",
+
+            // No database connection required for console logging
+            "connectURL": null,
+            "connectionClassName": null,
+
+            // No table needed for console logging
+            "tableName": null,
+
+            // No columns for console logging
+            "columns": [],
+
+            // Filter for the minimum logging level for this appender
+            "filter": {
+                "level": "INFO"  // Logs at INFO level or higher will be displayed in the console
+            }
+        }
+    ],
+
+    // The layout of the log messages, specifying how the log entries should be formatted
+    "layout": "[%level] %date - %logger - %thread : %msg %throwable"
+}
+
+
+```
