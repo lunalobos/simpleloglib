@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"simpleloglib"},{"l":"simpleloglib.appenders"},{"l":"simpleloglib.events"},{"l":"simpleloglib.filters"},{"l":"simpleloglib.layouts"},{"l":"simpleloglib.loggers"},{"l":"simpleloglib.messages"}];updateSearchResults();
