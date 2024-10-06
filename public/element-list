@@ -1,0 +1,7 @@
+simpleloglib
+simpleloglib.appenders
+simpleloglib.events
+simpleloglib.filters
+simpleloglib.layouts
+simpleloglib.loggers
+simpleloglib.messages
