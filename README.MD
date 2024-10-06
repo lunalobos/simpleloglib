@@ -64,75 +64,76 @@ The configuration can currently be understood with an example. A file named simp
 ```json
 
 {
-    // Number of threads to be used in the thread pool for logging
     "threads": 10,
-
-    // The batch size for batch insertions in general
     "batchSize": 100,
-
-    // List of appenders, each appender defines where logs will be output
     "appenders": [
         {
-            // Name of the appender, used for identification
             "name": "DatabaseAppender",
-
-            // Type of the appender, in this case, jdbc for relational database logging
             "type": "jdbc",
-
-            // The JDBC connection URL for the database
-            // You must include a username and password in the URL if you're using a more 
-            // advanced database. In this case, I use SQLite because I absolutely love 
-            // keeping things simple.
             "connectURL": "jdbc:sqlite:sample.db",
-
-            // Custom connection class name if needed (null by default)
-            "connectionClassName": null,
-
-            // The name of the table where logs will be stored
             "tableName": "application_log",
-
-            // List of columns in the database table that will store log information
             "columns": [
-                { "name": "event_id" },    // Unique ID for the log event
-                { "name": "event_date" },  // Timestamp of the log event
-                { "name": "level" },       // Log level (e.g., DEBUG, INFO, ERROR)
-                { "name": "message" },     // The log message
-                { "name": "logger" },      // Name of the logger instance
-                { "name": "throwable" }    // Details of any thrown exception (if any)
+                {
+                    "name": "event_id"
+                },
+                {
+                    "name": "event_date"
+                },
+                {
+                    "name": "level"
+                },
+                {
+                    "name": "message"
+                },
+                {
+                    "name": "logger"
+                },
+                {
+                    "name": "throwable"
+                }
             ],
-
-            // Filter to specify the minimum logging level for this appender
             "filter": {
-                "level": "DEBUG"  // Logs at DEBUG level or higher will be saved
+                "level": "DEBUG"
             }
         },
         {
-            // Name of the appender for console output
             "name": "ConsoleAppender",
-
-            // Type of appender for console logging
             "type": "console",
-
-            // No database connection required for console logging
-            "connectURL": null,
-            "connectionClassName": null,
-
-            // No table needed for console logging
-            "tableName": null,
-
-            // No columns for console logging
-            "columns": [],
-
-            // Filter for the minimum logging level for this appender
             "filter": {
-                "level": "INFO"  // Logs at INFO level or higher will be displayed in the console
+                "level": "INFO"
+            }
+        },
+        {
+            "name": "FileAppender",
+            "type": "file",
+            "filePath": "error.log",
+            "filter": {
+                "level": "ERROR"
             }
         }
     ],
-
-    // The layout of the log messages, specifying how the log entries should be formatted
     "layout": "[%level] %date - %logger - %thread : %msg %throwable"
 }
 
+```
+
+### Appenders
+There are three tested types of appenders: ConsoleApppender, JDBCAppender and FileAppender. In the other hand
+HttpAppender it is still experimental.
+
+You can add an HttpAppender with this configuration inside the appenders array:
+
+```json
+
+{
+    "name": "HttpAppender",
+    "type": "http",
+    "connectURL": "<insert your api URL>",
+    "authorization": "<insert yout authorization string if any or set this to null>",
+    "filter": {
+        "level": "TRACE"
+    },
+    "layout": "[%level] %date - %logger - %thread : %msg %throwable"
+}
 
 ```

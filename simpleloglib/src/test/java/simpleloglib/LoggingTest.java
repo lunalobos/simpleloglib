@@ -24,7 +24,8 @@ public class LoggingTest {
 
     @Test
     public void test() {
-        for (var i = 0; i < 100; i++) {
+        System.out.println(Config.SINGLETON.getAppenders());
+        for (var i = 0; i < 5; i++) {
         	 LOGGER.trace("Hello trace!");
              LOGGER.debug("Hello debug!");
              LOGGER.info("Hello info!");

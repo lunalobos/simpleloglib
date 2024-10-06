@@ -78,6 +78,7 @@ public class Config {
 			template = new ObjectMapper().readValue(Config.class.getClassLoader().getResourceAsStream("simplelog.json"),
 					ConfigTemplate.class);
 		} catch (IOException | IllegalArgumentException e) {
+			e.printStackTrace();
 			System.out.println("WARNING: simplelog.json not found, loading default config.");
 		}
 		loadFromTemplate(template);
@@ -90,12 +91,17 @@ public class Config {
 		appenders = template.getAppenders().stream().map(templ -> {
 			Appender appender;
 			switch (templ.getType()) {
-				case "jdbc":
-					appender = AppenderFactory.getJDBCAppender(templ.getName(), createJDBCAppenderConfig(templ));
-					break;
 				case "console":
 					appender = AppenderFactory.getDefaultInstance(templ.getName());
 					break;
+				case "jdbc":
+					appender = AppenderFactory.getJDBCAppender(templ.getName(), createJDBCAppenderConfig(templ));
+					break;
+				case "file":
+					appender = AppenderFactory.getFileAppender(templ.getName(),templ.getFilePath());
+					break;
+				case "http":
+					appender = AppenderFactory.getHttpAppender(templ.getName(), templ.getConnectURL(), templ.getAuthorization());
 				default:
 					appender = AppenderFactory.getDefaultInstance(templ.getName());
 			}
@@ -141,29 +147,77 @@ public class Config {
 
 @Data
 class ConfigTemplate {
+	/*
+	 * The number of threads to use by the logging system
+	 */
 	private int threads;
+	/*
+	 * The batch size indicates the number of events to be batched before sending
+	 * them to the appenders
+	 */
 	private int batchSize;
+	/*
+	 * The appender templates
+	 */
 	private List<AppenderTemplate> appenders;
+	/*
+	 * The layout string
+	 */
 	private String layout;
 }
 
 @Data
 class AppenderTemplate {
+	/*
+	 * The name of the appender.
+	 */
 	private String name;
+	/*
+	 * The type of the appender.
+	 */
 	private String type;
+	/*
+	 * The path to the file in case the appender type is file
+	 */
+	private String filePath;
+	/*
+	 * The url to connect to in case the appender type is jdbc or http
+	 */
 	private String connectURL;
+	/*
+	 * The authorization in case the appender type is http
+	 */
+	private String authorization;
+	/*
+	 * The class name of the connection in case the appender type is jdbc
+	 */
 	private String connectionClassName;
+	/*
+	 * The columns in case the appender type is jdbc
+	 */
 	private String tableName;
-	private List<ColumnTemplate> columns;
+	/*
+	 * The filter template
+	 */
 	private FilterTemplate filter;
+	/*
+	 * The column tempaltes in case the appender type is jdbc
+	 */
+	private List<ColumnTemplate> columns;
 }
 
 @Data
 class FilterTemplate {
+	/*
+	 * The level of the filter
+	 */
 	private String level;
 }
 
 @Data
 class ColumnTemplate {
+	/*
+	 * The name of the column
+	 */
 	private String name;
 }
