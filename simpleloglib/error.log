@@ -1,0 +1,10 @@
+[ERROR] 2024-10-06T11:14:00.259286-03:00 - simpleloglib.LoggingTest - main : Hello error! 
+[FATAL] 2024-10-06T11:14:00.259286-03:00 - simpleloglib.LoggingTest - main : Hello fatal! 
+[FATAL] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello fatal! 
+[ERROR] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello error! 
+[FATAL] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello fatal! 
+[ERROR] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello error! 
+[FATAL] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello fatal! 
+[ERROR] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello error! 
+[ERROR] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello error! 
+[FATAL] 2024-10-06T11:14:00.260284400-03:00 - simpleloglib.LoggingTest - main : Hello fatal! 

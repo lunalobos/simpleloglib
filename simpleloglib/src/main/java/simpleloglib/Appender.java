@@ -19,8 +19,8 @@ import java.util.Collection;
 /**
  * <p>
  * An {@code Appender} is a component that can append events to a output target.
- * Already in alpha version there are two implementations:
- * {@code ConsoleAppender} and {@code JDBCAppender}.
+ * Already in alpha version there are four implementations:
+ * {@code ConsoleAppender}, {@code JDBCAppender}, {@code FileAppender} and {@code HttpAppender}.
  * <p>
  * In the future i will add more implementations to log to a file or a to a web
  * server.

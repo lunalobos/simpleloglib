@@ -32,7 +32,7 @@ public class AppenderFactory {
 
 
     /**
-     * Get an instance of {@link ConsoleAppender}
+     * Retrieves an {@link Appender} that writes to the console
      * @param name
      * @return an instance of {@link ConsoleAppender}
      */
@@ -41,13 +41,36 @@ public class AppenderFactory {
     }
 
     /**
-     * Get an instance of {@link JDBCAppender}
+     * Retrieves an {@link Appender} that persists log events in a relational database
      * @param name
      * @param config
-     * @return an instance of {@link JDBCAppender}
+     * @return an implementation of {@link Appender}
      */
     public static Appender getJDBCAppender(String name, JDBCAppenderConfig config) {
         return new JDBCAppender(name, config);
+    }
+
+    /**
+     * Retrieves an {@link Appender} that writes to a file
+     * @param name
+     * @param path
+     * @return an implementation of {@link Appender}
+     */
+    public static Appender getFileAppender(String name, String path) {
+        return new FileAppender(name, path);
+    }
+
+    /**
+     * Experimental
+     * <p>Retrieves an {@link Appender} that writes to a web server using HTTP protocol
+     * with authentication. Warning: this appender is not tested
+     * @param name
+     * @param url
+     * @param authorization
+     * @return an implementation of {@link Appender}
+     */
+    public static Appender getHttpAppender(String name, String url, String authorization) {
+        return new HttpAppender(name, url, authorization);
     }
 
 }

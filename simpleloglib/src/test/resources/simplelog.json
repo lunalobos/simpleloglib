@@ -6,7 +6,6 @@
             "name": "DatabaseAppender",
             "type": "jdbc",
             "connectURL": "jdbc:sqlite:sample.db",
-            "connectionClassName": null,
             "tableName": "application_log",
             "columns": [
                 {
@@ -35,12 +34,16 @@
         {
             "name": "ConsoleAppender",
             "type": "console",
-            "connectURL": null,
-            "connectionClassName": null,
-            "tableName": null,
-            "columns": [],
             "filter": {
                 "level": "INFO"
+            }
+        },
+        {
+            "name": "FileAppender",
+            "type": "file",
+            "filePath": "error.log",
+            "filter": {
+                "level": "ERROR"
             }
         }
     ],
