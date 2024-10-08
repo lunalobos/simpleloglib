@@ -78,4 +78,9 @@ class FileAppender implements Appender {
         this.filter = filter;
     }
 
+    @Override
+    public String toString() {
+        return "FileAppender(name = %s, path = %s, filter = %s)".formatted(name, path, filter);
+    }
+
 }

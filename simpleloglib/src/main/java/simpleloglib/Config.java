@@ -102,6 +102,7 @@ public class Config {
 					break;
 				case "http":
 					appender = AppenderFactory.getHttpAppender(templ.getName(), templ.getConnectURL(), templ.getAuthorization());
+					break;
 				default:
 					appender = AppenderFactory.getDefaultInstance(templ.getName());
 			}
