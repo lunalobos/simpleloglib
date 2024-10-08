@@ -128,7 +128,7 @@ class LevelSetter implements BiConsumer<PreparedStatement, Event> {
 	@Override
 	public void accept(PreparedStatement t, Event u) {
 		try {
-			t.setString(this.index, u.logger().toString());
+			t.setString(this.index, u.level().name());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -23,6 +23,8 @@ import java.time.OffsetDateTime;
 import java.util.Collection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import lombok.Builder;
 import lombok.Data;
@@ -74,11 +76,14 @@ class HttpAppender implements Appender {
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
             connection.setRequestProperty("Accept", "application/json");
-            if(authorization != null) {
+            if (authorization != null) {
                 connection.setRequestProperty("Authorization", authorization);
             }
-            var objectMappper = new ObjectMapper();
+            var objectMappper = JsonMapper.builder()
+                    .addModule(new JavaTimeModule())
+                    .build();
             var json = objectMappper.writeValueAsString(eventBean);
+            
             var os = connection.getOutputStream();
             var input = json.getBytes(StandardCharsets.UTF_8);
             os.write(input, 0, input.length);
@@ -91,6 +96,11 @@ class HttpAppender implements Appender {
     @Override
     public void setFilter(Filter filter) {
         this.filter = filter;
+    }
+
+    @Override
+    public String toString() {
+        return "HttpAppender(name = %s, url = %s)".formatted(name, url);
     }
 
 }
